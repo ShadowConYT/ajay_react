@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { MdArrowOutward } from "react-icons/md";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
+import { useInView } from 'react-intersection-observer';
 
 const Works = ({projects}) => {
 
@@ -15,13 +16,24 @@ const Works = ({projects}) => {
 
     mockWorks.push(...projects);
 
-    const WorksCard = ({title, description, image, tags, link, delay}) => {
+    // useEffect(() => {
+    //     if (isInView) {
+    //         console.log('In View')
+    //     }
+    // }, [isInView])
+
+    const WorksCard = ({ title, description, image, tags, link, delay }) => {
+        const [inViewRef, isInView] = useInView({
+            triggerOnce: true,
+        })
+            
         return (
-            <motion.div 
-                initial={{opacity: 0, x: 100}}
-                animate={{opacity: 1, x: 0}}
-                transition={{duration: 0.5, delay:delay, type: 'spring'}}
-                exit={{opacity: 0, x: 100}}
+            <motion.div
+                ref={inViewRef}
+                initial={{ opacity: 0, x: 100 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: delay, type: 'spring' }}
+                exit={{ opacity: 0, x: 100 }}
                 className='md:w-[35vw] lg:w-[35vw] border-[#2f3c50] border-[1px] bg-[#00000] flex flex-col rounded-2xl items-center justify-center'>
                 <motion.div>
                     <img src={image} alt={title} className='rounded-t-2xl' />
@@ -31,11 +43,9 @@ const Works = ({projects}) => {
                         <motion.div className='flex flex-col flex-wrap'>
                             <h2 className='font-bold'>{title}</h2>
                             <p className='flex flex-wrap gap-1'>
-                                {
-                                    tags.map((tech, index) => {
-                                        return <span key={index} className='bg-[#2f3c50] text-xs text-yellow-400 rounded-md px-3 py-1'>{tech}</span>
-                                    })
-                                }
+                                {tags.map((tech, index) => (
+                                    <span key={index} className='bg-[#2f3c50] text-xs text-yellow-400 rounded-md px-3 py-1'>{tech}</span>
+                                ))}
                             </p>
                         </motion.div>
                         <a href={link} className='text-white'>
@@ -45,8 +55,8 @@ const Works = ({projects}) => {
                     <p>{description}</p>
                 </motion.div>
             </motion.div>
-        )
-    }
+        );
+    };
 
     return (
         <motion.div className='min-h-dvh w-[75vw] my-20'>
@@ -64,7 +74,7 @@ const Works = ({projects}) => {
                                     <motion.div key={index}
                                         className={`flex ${index % 2 == 0 ? 'hidden' : 'block'} my-10`}
                                     >
-                                        <WorksCard {...work} delay={index - 0.5} />
+                                        <WorksCard {...work} delay={index} />
                                     </motion.div>
                                 )
                             })
@@ -78,12 +88,12 @@ const Works = ({projects}) => {
                                 <motion.div key={index} 
                                     className={`flex ${index % 2 == 1 ? 'hidden' : 'block'} ${index == 0 ? 'mb-10' : 'my-10'}`}
                                 >
-                                    <WorksCard {...work} delay={index - 0.5} />
+                                    <WorksCard {...work} delay={index > 0 ? index - 0.7 : 0.5} />
                                 </motion.div>
                             )
                         })
                     }
-                </motion.div>
+                </motion.div> 
             </motion.div>
         </motion.div>
     )
