@@ -1,0 +1,28 @@
+.aboutIMG{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 1);
+    border-radius: 45% 45% 0px 0;
+    padding: 0px 30px;
+    overflow: hidden; 
+    border: double 30px #fff;
+    z-index: 10;
+    border-spacing: 100px ;
+}
+
+.hat{
+    position: absolute;
+    bottom: 0vw;
+    right: 11vw;
+    rotate: -20deg;
+    filter: contrast(1.5);
+    z-index: -1;
+}
+
+.card {
+    width: 190px;
+    height: 254px;
+    border-radius: 30px;
+    background: #212121;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                -15px -15px 30px rgb(60, 60, 60);
+   }
+   

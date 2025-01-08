@@ -1,0 +1,94 @@
+:root{
+    --primary-color: #4a0228;
+    --secondary-color: #f6c317;
+    --tertiary-color: #e1e1e1;
+    --quaternary-color: #606060;
+    
+}
+
+.head{
+    padding: 0.5rem 0rem !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    /*background-color: var(--secondary-color);*/
+    padding: 0.5rem 0.0rem;
+    border-radius: 25px;
+}
+
+
+nav a{
+    display: inline-block;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0 2rem;
+    color: var(--tertiary-color);
+    letter-spacing: 0px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+}
+
+.aTag:hover {
+    transform: scale(1.05); /* Add this line */
+}
+
+/* Write a Code for Active aTag and Change it's color to secondary */
+.active, .aTag:hover{
+    color: var(--secondary-color);
+}
+
+.nav-btn {
+    padding: 0px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@media only screen and (max-width:1024px) {
+    .head .nav-btn{
+        visibility: visible;
+        opacity: 1;
+        padding-left: 75vw;
+    }
+
+    .active, .aTag:hover{
+        color: var(--primary-color);
+    }
+
+    .head nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background: rgba(245, 189, 6,0.9);
+        transition: 1s;
+        backdrop-filter: blur(5px);
+        transform: translateY(-100vh);
+    }
+
+    .head nav a{
+        color: #000;
+    }
+
+    .head .responsive_nav{
+        transform: none;
+    }
+
+    .nav-close-btn{
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+}

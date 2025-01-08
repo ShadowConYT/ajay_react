@@ -1,0 +1,272 @@
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+*{
+	transition: all;
+}
+
+.card {
+	width: 400px;
+	height: 180px;
+	transition: all 0.2s;
+	position: relative;
+	cursor: pointer;
+  }
+  
+  .card-inner {
+	width: inherit;
+	height: inherit;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(10px);
+	border-radius: 8px;
+	border: 2px solid white;
+  }
+  
+  .card:hover {
+	transform: scale(1.04) rotate(1deg);
+  }
+  
+
+
+ @media only screen and (max-width: 1024px){
+	.circle{
+		position: relative;
+		width:  300px;
+		aspect-ratio: 1;
+		display: flex;
+		align-items: flex-end;
+		border-radius: 0 0 100vw 100vw;
+		overflow: hidden;
+	 }
+
+	 .circle .bg {
+		width: 100%;
+		aspect-ratio: 1;
+		object-fit: cover;
+		border-radius: 50%;
+	 }
+
+	 .circle .imagee{
+		position: absolute;
+		width: 100%;
+		transform: scale(1.2);
+	 }
+
+	 .whole{
+		animation: animate infinite 5s ease-in-out;
+	 }
+
+	 .socialContainer{
+		display: none;
+	 }
+
+	 .socials{
+		display: none;
+	 }
+
+ }
+
+ @media only screen and (max-width: 767.5px){
+	.circle{
+		max-width: 35vw;
+		min-width: 250px;
+		aspect-ratio: 1/ 1.2;
+	}
+ }
+
+
+ @keyframes animate {
+	0% {
+		transform: translateY(0);
+	}
+  }
+  
+  @keyframes move-down1 {
+	to {
+	  transform: translateY(10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+
+/* Button */
+
+.button {
+	position: relative;
+	padding: 10px 22px;
+	border-radius: 6px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	background-color: #7d2ae8;
+	transition: all 0.2s ease;
+  }
+  
+  .button:active {
+	transform: scale(0.96);
+  }
+  
+  .button:before,
+  .button:after {
+	position: absolute;
+	content: "";
+	width: 150%;
+	left: 50%;
+	height: 100%;
+	transform: translateX(-50%);
+	z-index: 10;
+	background-repeat: no-repeat;
+  }
+  
+  .button:hover:before {
+	top: -70%;
+	background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+	background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+	  10% 10%, 18% 18%;
+	background-position: 50% 120%;
+	animation: greentopBubbles 0.6s ease;
+  }
+  
+  @keyframes greentopBubbles {
+	0% {
+	  background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+		40% 90%, 55% 90%, 70% 90%;
+	}
+  
+	50% {
+	  background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+		50% 50%, 65% 20%, 90% 30%;
+	}
+  
+	100% {
+	  background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+		50% 40%, 65% 10%, 90% 20%;
+	  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+  }
+  
+  .button:hover::after {
+	bottom: -70%;
+	background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+	  radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+	background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+	background-position: 50% 0%;
+	animation: greenbottomBubbles 0.6s ease;
+  }
+  
+  @keyframes greenbottomBubbles {
+	0% {
+	  background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+		70% -10%, 70% 0%;
+	}
+  
+	50% {
+	  background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+		105% 0%;
+	}
+  
+	100% {
+	  background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+		110% 10%;
+	  background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+	}
+  }
+
+
+  /* Write a Animate that floats and revolves at the same time */
+  @keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+*{
+	transition: all;
+}
+
+
+.socials{
+	position: absolute;
+	border-radius: 50%;
+	color: var(--secondary-color);
+	animation: float 5s ease-in-out infinite;
+}
+
+.socials:nth-child(1){
+	bottom: 15vh;
+	right: 20vw;
+}
+
+.socials:nth-child(2){
+	top: 15vh;
+	left: 20vw;
+}
+
+.socials:nth-child(3){
+	top: 15vh;
+	right: 20vw;
+}
+
+.socials:nth-child(4){
+	bottom: 15vh;
+	left: 20vw;
+}
+
+.socialContainer{
+	border-radius: 50%;
+	width: 20vw;
+	top: 40vh;
+	right: 5vw;
+	position: absolute;
+	animation: rotate 15s linear infinite;
+}
+
+.socialContainer:hover{
+	animation-play-state: paused;
+}
+
+/* Rotate */
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
